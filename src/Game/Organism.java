@@ -45,26 +45,28 @@ public abstract class Organism {
 	
 	public void addCell(Cell cell) {
 		//adds the cells adjacent to this cell to edge IF THEY ARE NOT PART OF ANOTHER CELL
-		for (Cell c : cell.getAdjacentCells()) {
-			if (c.getOrganism() == null) {
-				edge.add(c);
+		try {
+			for (Cell c : cell.getAdjacentCells()) {
+				if (c.getOrganism() == null) {
+					edge.add(c);
+				}
 			}
-		}
-		
-		//updates the radius map to include this cell
-		updateRadiusMap(cell);
-		//updates the expandable cell list
-		updateExpandableCells();
-		//sets the organism for this cell to this organism
-		cell.setOrganism(this);
-		//adds this cell to the cell list
-		cells.add(cell);
-		//removes this cell from the edge list
-		edge.remove(cell);
-		//removes this cell from the expandable cell list
-		expandableCells.remove(cell);
-		//repaints the frame
-		world.repaint();
+
+			//updates the radius map to include this cell
+			updateRadiusMap(cell);
+			//updates the expandable cell list
+			updateExpandableCells();
+			//sets the organism for this cell to this organism
+			cell.setOrganism(this);
+			//adds this cell to the cell list
+			cells.add(cell);
+			//removes this cell from the edge list
+			edge.remove(cell);
+			//removes this cell from the expandable cell list
+			expandableCells.remove(cell);
+			//repaints the frame
+			world.repaint();
+		} catch (NullPointerException e) {}
 	}
 	
 	public void updateExpandableCells() {
