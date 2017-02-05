@@ -9,7 +9,7 @@ public class Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	protected static final int FRAME_WIDTH = 800;
 	protected static final int FRAME_HEIGHT = 800;
-	private String frameTitle = "Game";
+	private String frameTitle = "Amoeba";
 	
 	private Controls controls;
 	private World world;
